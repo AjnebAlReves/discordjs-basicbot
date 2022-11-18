@@ -1,0 +1,19 @@
+{
+  "name": "mbejubot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node ."
+  },
+  "author": "AjnebAlReves",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.30",
+    "discord.js": "^14.6.0",
+    "dotenv": "^16.0.3"
+  }
+}
