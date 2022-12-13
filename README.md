@@ -11,5 +11,5 @@
     ·
     <a href="https://github.com/AjnebAlReves/MbejuBot/issues">Reportar un Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Actualizaciones!</a>
+    <a href="https://github.com/AjnebAlReves/mbejubot/pulls">Actualizaciones!</a>
   </p>
