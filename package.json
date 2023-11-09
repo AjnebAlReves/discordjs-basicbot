@@ -1,10 +1,11 @@
 {
-  "name": "mbejubot",
-  "version": "1.0.0",
+  "name": "MbejuBot",
+  "version": "0.0.2-BETA",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "node ."
+    "run": "node .",
+    "dev": "nodemon ."
   },
   "author": "AjnebAlReves",
   "license": "ISC",

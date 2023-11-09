@@ -6,8 +6,9 @@ module.exports = {
 		const command = interaction.client.commands.get(interaction.commandName);
 
 		if (!command) {
-			console.error(`No command matching ${interaction.commandName} was found.`);
-			return;
+			console.error(`[Error] No hay comando existente con el nombre de ${interaction.commandName}.`);
+			interaction.reply(`¡Ese comando no existe! (o sí?)`);
+			//return;
 		}
 
 		try {
@@ -15,6 +16,7 @@ module.exports = {
 		} catch (error) {
 			console.error(`Error executing ${interaction.commandName}`);
 			console.error(error);
+			interaction.reply(`Hubo un error ejecutando el comando!`, ephimeral: true);
 		}
 	},
 };
