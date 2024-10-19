@@ -1,14 +1,4 @@
-# 🇵🇾 MbejuBot - Un bot de Discord 100% Paraguayo 🇵🇾
-**MbejuBot** es un bot de Discord 100% Paraguayo con muchas funciones, sin necesidad de instalar nada más. ¿Cansado de buscar bots de Discord que hagan una funcionalidad X en tu servidor y no encuentras nada? ¡Pues esta es tu solución!
-
-## ⭐ Funcionalidades
-- 🛡️ Funciones de moderación
-- 💰 Funciones de economía avanzadas
-- 🔧 Funciones de utilidades avanzadas
-- 📊 Funciones de estadísticas avanzadas
-- 🎮 Juegos
-- 🤖 Funciones de feeds RSS y notificaciones
-
+# Discord.JS Guide - Basic Bot
 ## 🔧 Instalación
 
 ```bash
