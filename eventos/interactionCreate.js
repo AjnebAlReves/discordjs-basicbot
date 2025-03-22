@@ -16,7 +16,7 @@ module.exports = {
 		} catch (error) {
 			console.error(`Error executing ${interaction.commandName}`);
 			console.error(error);
-			interaction.reply(`Hubo un error ejecutando el comando!`, ephimeral: true);
+			interaction.reply({content: `Hubo un error ejecutando el comando!`, ephemeral: true});
 		}
 	},
 };

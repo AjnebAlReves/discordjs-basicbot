@@ -9,25 +9,22 @@ module.exports = {
         .setName("objetivo")
         .setDescription("Usuario al que mostrar su imágen de perfil")
     ),
-    /*.addOption((option) =>
-      option
-        .setName("hidden")
-        .setDescription("¿Mostrar en oculto?")
-    ),*/
 
   async execute(interaction) {
-    const user = interaction.options.getUser("objetivo");
-    //const hidden = int
-    if (user)
-      return interaction.reply(
-        `[¡](${user.displayAvatarURL({
-          dynamic: true,
-        })})Aquí tienes el avatar de ${user.username}!:`
-      );
-    return interaction.reply(
-      `[¡](${interaction.user.displayAvatarURL({
-        dynamic: true,
-      })})Aquí tienes tu avatar, ${interaction.user.username}!:`
-    );
+    const user = interaction.options.getUser("objetivo") || interaction.user;
+    
+    const embed = {
+      color: 0x0099ff,
+      title: user.id === interaction.user.id ? 'Tu avatar' : `Avatar de ${user.username}`,
+      image: {
+        url: user.displayAvatarURL({ dynamic: true, size: 4096 })
+      },
+      footer: {
+        text: `Solicitado por ${interaction.user.username}`
+      },
+      timestamp: new Date()
+    };
+
+    return interaction.reply({ embeds: [embed] });
   },
 };

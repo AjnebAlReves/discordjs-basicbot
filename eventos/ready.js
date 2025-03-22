@@ -16,7 +16,7 @@ module.exports = {
       .filter((file) => file.endsWith(".js"));
 
     for (const file of commandFiles) {
-      const command = require(`./comandos/${file}`);
+      const command = require(`../comandos/${file}`);
       commands.push(command.data.toJSON());
     }
 
@@ -27,7 +27,7 @@ module.exports = {
         console.log(`Recargando ${commands.length} comandos (/)...`);
         const data = await rest.put(
           //Routes.applicationGuildCommands(process.env.BOTID, process.env.GuildID), // Put to a guild
-          Routes.applicationCommands(process.env.BOTID), // Put to the bot
+          Routes.applicationCommands(client.user.id), // Put to the bot
           { body: commands }
         );
 
@@ -36,6 +36,9 @@ module.exports = {
         console.error(error);
       }
     })();
-	console.log(`Conectado como ${client.user.tag}`);
+    console.log(`Conectado como ${client.user.tag}`);
+    console.log(`Servidores: ${client.guilds.cache.size}`);
+    console.log(`Usuarios: ${client.users.cache.size}`);
+    console.log(`Invitación: https://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands`);
   },
 };
