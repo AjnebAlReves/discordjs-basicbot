@@ -46,7 +46,27 @@ try {
   }
 } catch (error) {
   console.error(`Error loading commands: ${error}`);
-}/**************
+}
+
+/*******************
+ *  TextCommands   *
+*******************/
+
+const textCommandsPath = path.join(__dirname, 'text-commands');
+const textCommandFiles = fs.readdirSync(textCommandsPath).filter(file => file.endsWith('.js'));
+
+for (const file of textCommandFiles) {
+  const filePath = path.join(textCommandsPath, file);
+  const command = require(filePath);
+  if ('name' in command && 'execute' in command) {
+    client.commands.set(command.name, command);
+    console.log(`[INFO] Comando de texto registrado: ${config.bot.prefix}${command.name}`);
+  } else {
+    console.log(`[WARN] Al comando de texto ubicado en ${filePath} le falta una propiedad requerida "name" o "execute". Sin una de ellas, el comando no se podrá ejecutar`);
+  }
+}
+
+/**************
  *    Login    *
  **************/
 client.login(process.env.DISCORD);
