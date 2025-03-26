@@ -5,17 +5,48 @@ module.exports = {
     .setName("hola")
     .setDescription("Saluda"),
   async execute(interaction) {
-    const button = new ButtonBuilder()
-      .setCustomId('create_ticket')
-      .setLabel('Crear Ticket')
-      .setStyle(ButtonStyle.Primary);
+    const menu = new StringSelectMenuBuilder()
+      .setCustomId('t_create_ticket')
+      .setPlaceholder('Selecciona una categoría')
+      .addOptions([
+        {
+          emoji: '💬',
+          label: 'Soporte',
+          description: 'Ayuda con nuestros servicios o productos',
+          value: 'soporte',
+        },
+        {
+          emoji: '🛒',
+          label: 'Realizar pedido',
+          description: 'Solicitar un trabajo o proyecto',
+          value: 'pedido',
+        },
+        {
+          emoji: '🐛',
+          label: 'Reportar bug',
+          description: 'Reportar un error o problema técnico',
+          value: 'bug',
+        },
+        {
+          emoji: '💼',
+          label: 'Postulaciones', 
+          description: 'Postulate para ser parte del equipo',
+          value: 'postulacion',
+        },
+        {
+          emoji: '🗑️',
+          label: 'Solo andaba mirando',
+          description: 'Limpia el Menú de selección.',
+          value: 'limpiar',
+        }
+      ]);
 
     const row1 = new ActionRowBuilder()
-      .addComponents(button);
+      .addComponents(menu);
 
     const embed = new EmbedBuilder()
       .setColor(0x0099FF)
-      .setTitle('Ejemplo de Embed')
+      .setTitle('Sistema de Tickets | ByAlRevés Studio')
       .setDescription(`
 ¡Gracias por ponerte en contacto con nosotros! Selecciona la categoría que mejor se ajuste a tu necesidad:
 
@@ -25,7 +56,8 @@ module.exports = {
 🔹 Postulaciones: Para postularte y ser parte del equipo
 
 👉 Haz clic en el botón correspondiente para abrir un ticket. Nuestro equipo se pondrá en contacto contigo lo antes posible. 💬
-`);
+`)
+      .setImage("https://media.discordapp.net/attachments/1337244243244220457/1351925553346908250/6.png?ex=67e40f49&is=67e2bdc9&hm=ba469d0c56d990ce37e491dfeea6fdaf55348f68597b2132a71e1c54975bc1c8&=&format=webp&quality=lossless");
 
     await interaction.channel.send({ embeds: [embed], components: [row1] });
     await interaction.deferReply();

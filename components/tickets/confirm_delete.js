@@ -1,4 +1,4 @@
-const config = require('../config');
+const config = require('../../config');
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require('discord.js');
 const fs = require('fs');
 module.exports = {
@@ -22,9 +22,13 @@ module.exports = {
                     const messages = await channel.messages.fetch({ filter: (message) => !message.author.bot });
                     const messageContent = Array.from(messages.values())
                         .sort((a, b) => a.createdTimestamp - b.createdTimestamp)
-                        .map(message => `${message.author.username}: ${message.content || "Mensaje vacio"}`)
-                        .join('\n');
-                    fs.writeFileSync(`${channel.id}-${Math.floor(new Date() / 1000)}.txt`, messageContent);            // Eliminamos el canal
+                        .map(message => ({
+                            user: message.author.username,
+                            createdAt: message.createdTimestamp,
+                            content: message.content || "Mensaje vacio",
+                            embeds: message.embeds
+                        }));
+                    fs.writeFileSync(`${channel.id}-${Math.floor(new Date() / 1000)}.json`, JSON.stringify(messageContent, null, 2));            // Eliminamos el canal
             await channel.delete();
         } catch (error) {
             console.error(error);

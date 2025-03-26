@@ -1,4 +1,4 @@
-const config = require('../config');
+const config = require('../../config');
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js');
 const fs = require('fs');
 module.exports = {
@@ -17,11 +17,11 @@ module.exports = {
             const confirmRow = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
-                        .setCustomId('confirm_delete')
+                        .setCustomId('t_confirm_delete')
                         .setLabel('Confirmar')
                         .setStyle('Danger'),
                     new ButtonBuilder()
-                        .setCustomId('cancel_delete')
+                        .setCustomId('t_cancel_delete')
                         .setLabel('Cancelar')
                         .setStyle('Secondary'),
                 );
